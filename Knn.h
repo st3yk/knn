@@ -1,11 +1,8 @@
-Knn::Knn(int neighborsNo) {
-    this->neighborsNo = neighborsNo;
-}
-
-void Knn::classify(){
-    for(int i=0; i < n; ++i){
-
-    }
-}
-
-double Knn:distance:
+class Knn{
+    private:
+        int neighborsNo;
+        void Knn::classify();
+    public:
+        Knn::Knn(int neighborsNo);
+        Knn::~Knn();
+};
