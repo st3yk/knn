@@ -6,3 +6,4 @@ class Knn{
         Knn::Knn(int neighborsNo);
         Knn::~Knn();
 };
+    
