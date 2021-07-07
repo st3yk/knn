@@ -1,8 +1,10 @@
 #include <iostream>
-#include "Data.h"
+#include "Knn.h"
 
 int main(){
-    Data my_data = Data("iris");
-    my_data.train_test_split(0.8);
+    Data* my_data = new Data("iris");
+    my_data->train_test_split(0.8);
+    Knn classifier = Knn(my_data);
+    classifier.classify(3);
     return 0;
 }
