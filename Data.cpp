@@ -60,6 +60,22 @@ void Data::print(){
     }
 }
 
+void Data::train_test_split(double train_size){
+    int split_point = train_size * classes.size();
+    int r = 500;
+    int ind1, ind2;
+    while(r--){
+        ind1 = rand() % classes.size();
+        ind2 = rand() % classes.size();
+        swap(classes[ind1], classes[ind2]);
+        swap(values[ind1], values[ind2]);
+    }
+    copy(classes.begin(), classes.begin() + split_point, std::back_inserter(train_classes));
+    copy(classes.begin() + split_point, classes.end(), std::back_inserter(test_classes));
+    copy(values.begin(), values.begin() + split_point, std::back_inserter(train_values));
+    copy(values.begin() + split_point, values.end(), std::back_inserter(test_values));
+}
+
 Data::~Data(){
 
 }
