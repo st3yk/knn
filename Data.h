@@ -16,6 +16,7 @@ private:
     
     void load();
     void load_iris();
+    friend class Knn;
 public:
     Data(std::string dataset);
     void print();
