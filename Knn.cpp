@@ -62,6 +62,5 @@ double Knn::norm(std::vector<double> &v1, std::vector<double> &v2){
 }
 
 Knn::~Knn(){
-
 }
 
