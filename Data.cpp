@@ -1,8 +1,10 @@
 #include <iostream>
+#include <fstream>
 #include "Data.h"
 
 Data::Data(std::string dataset){
     this->dataset = dataset;
+    this->path = "datasets/" + dataset + ".csv";
     this->load();
 }
 
@@ -15,7 +17,9 @@ void Data::load(){
 }
 
 void Data::load_iris(){
-    std::cout<<"Loading iris\n";
+    std::cout<<"Loading iris...\n";
+    std::fstream fin;
+    fin.open(path, std::ios::in);
 }
 
 Data::~Data(){
