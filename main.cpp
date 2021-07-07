@@ -2,6 +2,7 @@
 #include "Data.h"
 
 int main(){
-    Data s = Data("iris");
+    Data my_data = Data("iris");
+    my_data.print();
     return 0;
 }
