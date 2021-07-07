@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <fstream>
 #include "Data.h"
 
@@ -18,8 +19,45 @@ void Data::load(){
 
 void Data::load_iris(){
     std::cout<<"Loading iris...\n";
-    std::fstream fin;
-    fin.open(path, std::ios::in);
+    std::ifstream file(this->path, std::ifstream::in);
+    std::string line, val;
+    
+    //Extracting column names 
+    if(file.good()){
+        std::getline(file, line);
+        std::stringstream ss(line);
+        
+        while(std::getline(ss, val, ',')){
+            col_names.push_back(val);
+        }
+    } 
+
+    //Reading values and classes
+    while(std::getline(file, line)){
+        std::stringstream ss(line);
+        std::vector<double> temp;
+        for(size_t i = 0; i < col_names.size(); i++){
+            std::getline(ss, val, ',');
+            if(5 > i && i > 0){
+                temp.push_back(std::stod(val));
+            }else if(i == 5){
+                classes.push_back(val);    
+            }
+        }
+        values.push_back(temp);
+    }
+    
+    //Deleting index from columns names since we don't use it
+    col_names.erase(col_names.begin());
+}
+
+void Data::print(){
+    for(auto name: col_names) std::cout << name << "  ";
+    std::cout << std::endl;
+    for(size_t i = 0; i < classes.size(); ++i){
+        for(auto val: values[i]) std::cout << val << "  ";
+        std::cout << "> " << classes[i] << std::endl;
+    }
 }
 
 Data::~Data(){
